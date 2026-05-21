@@ -1,0 +1,34 @@
+import watson_nlp
+
+def emotion_detector(text_to_analyze):
+    # Load the emotion detection model
+    emotion_model = watson_nlp.load('emotion_aggregated-workflow_lang_en_stock')
+    
+    # Run the model on the input text
+    result = emotion_model.run(text_to_analyze)
+    
+    # Extract the emotion predictions
+    emotions = result.get_emotion_predictions()
+    
+    # Extract the individual emotion scores
+    anger_score = emotions.get('anger', 0)
+    disgust_score = emotions.get('disgust', 0)
+    fear_score = emotions.get('fear', 0)
+    joy_score = emotions.get('joy', 0)
+    sadness_score = emotions.get('sadness', 0)
+    
+    # Determine the dominant emotion
+    emotion_scores = {
+        'anger': anger_score,
+        'disgust': disgust_score,
+        'fear': fear_score,
+        'joy': joy_score,
+        'sadness': sadness_score
+    }
+    
+    dominant_emotion = max(emotion_scores, key=emotion_scores.get)
+    
+    # Update dictionary to include dominant emotion
+    emotion_scores['dominant_emotion'] = dominant_emotion
+    
+    return emotion_scores
