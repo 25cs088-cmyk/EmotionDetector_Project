@@ -1,0 +1,4 @@
+Testing emotion detection with formatted output...
+Input Text: "I am so happy today!"
+Result: {'anger': 0.01, 'disgust': 0.00, 'fear': 0.01, 'joy': 0.95, 'sadness': 0.03, 'dominant_emotion': 'joy'}
+Test status: Passed
