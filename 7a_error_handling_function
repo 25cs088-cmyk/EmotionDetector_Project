@@ -1,0 +1,27 @@
+import watson_nlp
+
+def emotion_detector(text_to_analyze):
+    # Check for blank input
+    if not text_to_analyze or text_to_analyze.isspace():
+        return {
+            'anger': None, 'disgust': None, 'fear': None, 
+            'joy': None, 'sadness': None, 'dominant_emotion': None
+        }
+
+    emotion_model = watson_nlp.load('emotion_aggregated-workflow_lang_en_stock')
+    result = emotion_model.run(text_to_analyze)
+    emotions = result.get_emotion_predictions()
+    
+    # Extract and format scores
+    emotion_scores = {
+        'anger': emotions.get('anger'),
+        'disgust': emotions.get('disgust'),
+        'fear': emotions.get('fear'),
+        'joy': emotions.get('joy'),
+        'sadness': emotions.get('sadness')
+    }
+    
+    dominant_emotion = max(emotion_scores, key=emotion_scores.get)
+    emotion_scores['dominant_emotion'] = dominant_emotion
+    
+    return emotion_scores
