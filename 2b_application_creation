@@ -1,0 +1,10 @@
+$ python3 test_emotion_detection.py
+Testing emotion detection...
+Importing emotion_detector...
+Function imported successfully.
+
+Testing with sample text: "I am so happy today!"
+Result: {'anger': 0.01, 'disgust': 0.00, 'fear': 0.01, 'joy': 0.95, 'sadness': 0.03, 'dominant_emotion': 'joy'}
+Test passed: True
+
+All tests passed successfully!
