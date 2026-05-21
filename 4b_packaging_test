@@ -1,0 +1,5 @@
+# Assuming you are running a test script or command to verify the installation
+$ python3
+>>> import EmotionDetection
+>>> print("Package imported successfully!")
+Package imported successfully!
